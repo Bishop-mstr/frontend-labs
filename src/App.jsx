@@ -1,15 +1,11 @@
 import './App.css'
-import Light from './components/Light'
+import TrafficLights from './components/TrafficLights'
 
 function App() {
   return (
     <main className="app">
       <h1>Світлофор</h1>
-      <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
-        <Light color="red" />
-        <Light color="yellow" />
-        <Light color="green" />
-      </div>
+      <TrafficLights />
     </main>
   )
 }
