@@ -2,3 +2,25 @@
   padding: 32px;
   text-align: center;
 }
+
+.traffic-lights-demo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 48px;
+  margin-top: 24px;
+}
+
+.traffic-light-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.traffic-light-card h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
