@@ -1,10 +1,15 @@
 import './Light.css'
 
-function Light({ color }) {
+function Light({ color, isActive }) {
+  const activeClass = isActive ? 'active' : ''
+
   return (
     <div
-      className="light"
-      style={{ backgroundColor: color }}
+      className={`light ${activeClass}`}
+      style={{
+        backgroundColor: color,
+        boxShadow: isActive ? '0 0 20px ' + color : undefined,
+      }}
     />
   )
 }
