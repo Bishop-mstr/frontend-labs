@@ -1,0 +1,28 @@
+.stats-bar {
+    margin-top: 20px;
+    padding: 16px 20px;
+    background-color: #ffffff;
+    border: 2px solid #e4e4e7;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 260px;
+  }
+  
+  .stats-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    font-size: 0.95rem;
+  }
+  
+  .stats-counts {
+    display: flex;
+    justify-content: space-around;
+    gap: 12px;
+    padding: 8px 0;
+    border-top: 1px solid #e4e4e7;
+    border-bottom: 1px solid #e4e4e7;
+    font-weight: 600;
+  }

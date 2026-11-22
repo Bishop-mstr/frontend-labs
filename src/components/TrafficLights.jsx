@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Light from './Light'
+import StatsBar from './StatsBar'
 import './TrafficLights.css'
 
 function TrafficLights({ orientation = 'vertical' }) {
@@ -11,6 +12,7 @@ function TrafficLights({ orientation = 'vertical' }) {
   })
 
   const directionClass = orientation === 'horizontal' ? 'horizontal' : 'vertical'
+  const totalClicks = clicks.red + clicks.yellow + clicks.green
 
   function handleSelect(color) {
     setCurrentSignal(color)
@@ -21,15 +23,17 @@ function TrafficLights({ orientation = 'vertical' }) {
   }
 
   return (
-    <div>
+    <div style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'center' }}>
       <div className={`traffic-lights ${directionClass}`}>
         <Light color="red" isActive={currentSignal === 'red'} onSelect={handleSelect} />
         <Light color="yellow" isActive={currentSignal === 'yellow'} onSelect={handleSelect} />
         <Light color="green" isActive={currentSignal === 'green'} onSelect={handleSelect} />
       </div>
-      <p>
-        Red: {clicks.red} | Yellow: {clicks.yellow} | Green: {clicks.green}
-      </p>
+      <StatsBar
+        currentSignal={currentSignal}
+        clicks={clicks}
+        totalClicks={totalClicks}
+      />
     </div>
   )
 }
