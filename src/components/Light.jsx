@@ -1,6 +1,6 @@
 import './Light.css'
 
-function Light({ color, isActive }) {
+function Light({ color, isActive, onSelect }) {
   const activeClass = isActive ? 'active' : ''
 
   return (
@@ -10,6 +10,7 @@ function Light({ color, isActive }) {
         backgroundColor: color,
         boxShadow: isActive ? '0 0 20px ' + color : undefined,
       }}
+      onClick={() => onSelect(color)}
     />
   )
 }
