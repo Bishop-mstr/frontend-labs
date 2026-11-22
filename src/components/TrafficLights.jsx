@@ -10,9 +10,14 @@ function TrafficLights({ orientation = 'vertical' }) {
     yellow: 0,
     green: 0,
   })
+  const [currentOrientation, setCurrentOrientation] = useState(orientation)
 
-  const directionClass = orientation === 'horizontal' ? 'horizontal' : 'vertical'
+  const directionClass = currentOrientation === 'horizontal' ? 'horizontal' : 'vertical'
   const totalClicks = clicks.red + clicks.yellow + clicks.green
+  const orientationLabel =
+    currentOrientation === 'vertical'
+      ? 'Вертикальна орієнтація'
+      : 'Горизонтальна орієнтація'
 
   function handleSelect(color) {
     setCurrentSignal(color)
@@ -22,18 +27,24 @@ function TrafficLights({ orientation = 'vertical' }) {
     }))
   }
 
+  function handleToggleOrientation() {
+    setCurrentOrientation((prev) => (prev === 'vertical' ? 'horizontal' : 'vertical'))
+  }
+
   return (
     <div style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'center' }}>
+      <StatsBar
+        currentSignal={currentSignal}
+        clicks={clicks}
+        totalClicks={totalClicks}
+        orientationLabel={orientationLabel}
+        onToggleOrientation={handleToggleOrientation}
+      />
       <div className={`traffic-lights ${directionClass}`}>
         <Light color="red" isActive={currentSignal === 'red'} onSelect={handleSelect} />
         <Light color="yellow" isActive={currentSignal === 'yellow'} onSelect={handleSelect} />
         <Light color="green" isActive={currentSignal === 'green'} onSelect={handleSelect} />
       </div>
-      <StatsBar
-        currentSignal={currentSignal}
-        clicks={clicks}
-        totalClicks={totalClicks}
-      />
     </div>
   )
 }
